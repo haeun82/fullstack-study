@@ -221,7 +221,8 @@
     <textarea id=""multi cols="30" rows="6" spellcheck="false" style="resize: none"></textarea>
 
     <!-- form: 작성한 내용이 어떤 서버 경로로, 어떤 방식(GET, POST)으로 전달 될지 설정 할 수 있음 -->
-    <form action="경로" method="get">
+    <!-- get 방식: 주소에 데이터 넣어서 보내기( 노출 ) - 주로 검색 창에서 많이 쓰임 -->
+    <form action="경로" method="get">  
       <!-- name 속성: 서버로 전달 할 때 유니크하게 구분하기 위한 이름 -->
       <input type="text" name="name">
       <input type="text" name="age">
@@ -229,12 +230,5 @@
       <!-- <form>태그 안에 있어야 submit 이벤트가 작동됨 -->
       <button type="submit">전송</button>
     </form>
-
-
-
-
-
-
-
 </body>
 </html>
