@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   .main-background {
+    width: 100%;
+    height: 500px;
+    background-image: url(./bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+
+    /* margin collapse 현상(마진 상쇄) 피하기 */
+    /* 1. 패딩을 최대한 활용 */
+    padding-top: 50px;
+
+    /* 2. 테두리가 안붙게 살짝 떨어트림(꼼수) */
+    /* padding: 0.1px; */
+
+    position: relative;
+
+   }
+
+   .main-title {
+    color: #fff;
+    font-size: 40px;
+    /* margin-top: 100px; */
+    /* (참고) margin collapse 현상(마진 상쇄): 
+      원래 박스들의 테두리가 만나면 margin이 하나로 합쳐짐
+      (박스가 내부에서 만나든 외부에서 만나든 상관없이) 마진을 하나로 합쳐주고
+      둘다 마진이 있으면 둘 중에 더 큰 마진을 하나만 적용
+
+      1. 박스 2개가 부모-자식 관계로 위쪽 테두리가 겹친 상태
+      2. 박스 2개가 형제 관계로 위,아래 테두리가 겹친 상태
+    */
+   }
+
+   .main-content {
+    color: #fff;
+   }
+
+   .main-button {
+    padding: 10px 30px;
+    font-size: 20px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+   }
+
+   .main-button:hover {
+    background-color: #eee;
+   }
+
+   /* 겹치는 레이아웃 만들기 */
+   .sub-description {
+      /* 화면이 작을 때는 80%만, 넓어지면 최대 700px까지 */
+      width: 80%; /* 부모 width의 80% */
+      max-width: 700px;
+      padding: 10px;
+      background-color: #eee;
+      border-radius: 20px;
+      margin:0 auto;
+
+      /* relative 사용시 */
+      /* position: relative;
+      top: 100px; */
+
+      /* absolute 사용시 */
+      position: absolute;
+      bottom: -100px;
+      left: 0;
+      right: 0;
+   }
+
+   .history {
+    background-color: #aeaeae;
+    padding: 100px 20px 40px;
+   }
+
+   .history >h4 {
+    text-align: center;
+   }
+  </style>
+</head>
+<body>
+  <div class="main-background">
+    <h4 class="main-title">Buy our excellent shoes!</h4>
+    <p class="main-content">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ipsa maxime, 
+      iste fugiat temporibus quis expedita architecto deleniti aliquid necessitatibus, 
+      ducimus quia eveniet repudiandae corporis minus! Reiciendis nulla aut quisquam!
+    </p>
+    <button type="button" class="main-button">Buy Now</button>
+    <div class="sub-description">
+      <h4>How we design our shoes</h4>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ipsa maxime, 
+        iste fugiat temporibus quis expedita architecto deleniti aliquid necessitatibus, 
+        ducimus quia eveniet repudiandae corporis minus! Reiciendis nulla aut quisquam!
+      </p>
+    </div>
+  </div>
+  <div class="history">
+    <h4>Our best shoes &History</h4>
+    <ul>
+      <li>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ipsa maxime, 
+        iste fugiat temporibus quis expedita architecto deleniti aliquid necessitatibus, 
+        ducimus quia eveniet repudiandae corporis minus! Reiciendis nulla aut quisquam!
+      </li>
+      <li>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ipsa maxime, 
+        iste fugiat temporibus quis expedita architecto deleniti aliquid necessitatibus, 
+        ducimus quia eveniet repudiandae corporis minus! Reiciendis nulla aut quisquam!
+      </li>
+      <li>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ipsa maxime, 
+        iste fugiat temporibus quis expedita architecto deleniti aliquid necessitatibus, 
+        ducimus quia eveniet repudiandae corporis minus! Reiciendis nulla aut quisquam!
+      </li>
+      <li>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ipsa maxime, 
+        iste fugiat temporibus quis expedita architecto deleniti aliquid necessitatibus, 
+        ducimus quia eveniet repudiandae corporis minus! Reiciendis nulla aut quisquam!
+      </li>
+      <li>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ipsa maxime, 
+        iste fugiat temporibus quis expedita architecto deleniti aliquid necessitatibus, 
+        ducimus quia eveniet repudiandae corporis minus! Reiciendis nulla aut quisquam!
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
