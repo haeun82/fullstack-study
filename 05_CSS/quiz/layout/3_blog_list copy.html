@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 공통 스타일은 앞부분에 작성 */
+    ul {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+
+    .navbar {
+      display: flex;
+      column-gap: 10px; 
+    }
+
+    .navbar li {
+      width: 60px;
+      text-align: center;
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .navbar a {
+      font-size: 20px;
+    }
+
+    .container {
+      display: flex;
+      width: 800px;
+      margin: 0 auto;
+    }
+
+    .blog-content {
+      width: 80%;
+      height: 200px;
+    }
+
+    .blog-img {
+      width: 20%;
+      height: 200px;
+    }
+
+    .content-header {
+      display: flex;
+      align-items: center;
+    }
+
+    .content-header img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .blog-name > h4,
+    .blog-name > p {
+      margin: 5px;
+    }
+
+    .blog-img > img {
+      width: 100%
+    }
+  </style>
+</head>
+<body>
+  <!-- Tip! 레이아웃을 만드는 기본
+    뭘 만들든 레이아웃은 항상 박스부터 만들고 시작하면됨
+    그리고 이 박스들은 전부 div로 구현해놓으면 됨(물론 시맨틱 태그도 최대한 활용)
+    그리고 안에다가 글 넣고 그림 넣고 하면 끝!
+
+    이때 div는 블록 요소이기 때문에 위아래로 배치
+    좌우로 나란히 배치하고 싶으면 float(사용 x), inline-block, flexbox(제일 많이 사용)
+  -->
+
+  <!-- navbar -->
+  <nav>
+    <ul class="navbar">
+      <li><a href="#">영화</a></li>
+      <li><a href="#">맛집</a></li>
+      <li><a href="#">IT</a></li>
+      <li><a href="#">컴퓨터</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- blog list item -->
+  <div class="container">
+    <div class="blog-content">
+      <div class="content-header">
+        <!-- 프로필 이미지 -->
+        <img src="./logo.png" alt="프로필 사진">
+        <!-- 작성자, 시간 -->
+        <div class="blog-name">
+          <h4>킴고니</h4>
+          <p>1시간 전</p>
+        </div>
+        
+      </div>
+      <div>
+        <!-- 글제목, 글 내용 -->
+        <h4>가성비 맛집을 발견했어요!</h4>
+        <p>
+          소고기 맛이ㅆ썽.초밥 맛있어, 치킨 맛있어. 돼지고기 맛있어. 쌀국수 맛이썽.
+          돈까스 맛있엉. 숯불닭갈비 맛이어. 한우 한돈 . 피자맛있어. 맥주 . 회 다 맛있ㅆ어.
+          떡볶이 먹고싶다. 헤헤
+        </p>
+      </div>
+    </div>
+    <div class="blog-img">
+      <!-- 이미지 -->
+      <img src="https://dummyimage.com/250x250" alt="샘플 이미지">
+    </div>
+  </div>
+</body>
+</html>
