@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
+  <link rel="stylesheet" href="../naver/css/main.css">
+</head>
+<body>
+  <!-- 헤더 영역 -->
+  <header>
+    <!-- 가운데 정렬을 위한 div -->
+    <div class="top">
+      <h1 class="logo">
+        <a href="#">
+          <img src="https://ssl.pstatic.net/static/nid/join/m_logo_naver.png" alt="네이버 로고">
+        </a>
+      </h1>
+    </div>
+  </header>
+
+  <!-- 메인 영역 -->
+  <main id="container">
+    <!-- 가운데 정렬을 위한 div -->
+    <div class="section-input">
+      <label for="id">아이디</label>
+      <div class="input-group-row">
+        <input type="text" maxlength="8" id="id">
+        <span>@naver.com</span>
+      </div>
+
+      <label for="pw">비밀번호</label>
+      <input type="password" maxlength="12" id="pw">
+
+      <label for="pw-1">비밀번호 재확인</label>
+      <input type="password" maxlength="12" id="pw-1">
+      
+      <label for="name">이름</label>
+      <input type="text" id="name" maxlength="5">
+
+      <label for="birth">생년월일</label>
+      <div class="select-input">
+        <input type="text" id="birth" maxlength="4" placeholder="년(4자)">
+        <select id="month">
+          <option value="select">월</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+        </select>
+        <input type="text" id="day" maxlength="2" placeholder="일">
+      </div>    
+      <label for="gender">성별</label>
+      <select id="gender">
+        <option value="gender">성별</option>
+        <option value="male">남자</option>
+        <option value="female">여자</option>
+      </select>
+
+      <label for="email">본인 확인 이메일(선택)</label>
+      <input type="email" id="email" maxlength="20" placeholder="선택입력">
+
+      <label for="phone">휴대전화</label>
+      <select id="nation">
+        <option value="nation1">가나 +233</option>
+        <option value="nation2">가봉 +241</option>
+        <option value="nation3" selected>대한민국 +82</option>
+        <option value="nation4">홍콩 +852</option>
+      </select>
+      <div class="btn-box">
+        <button type="button">인증번호 받기</button>
+        <input type="text" id="phone" maxlength="6" placeholder="전화번호 입력">
+      </div>
+      <input type="text" id="phone" class="readonly" placeholder="인증번호를 입력하세요" readonly>
+
+      <button type="button">가입하기</button>
+    </div>
+  </main>
+
+  <!-- 푸터 영역 -->
+  <footer>
+    <!-- 가운데 정렬을 위한 div -->
+    <div class="bottom">
+      <div class="bt-menu">
+        <span>이용약관</span>
+        <span>개인정보처리방침</span>
+        <span>책임의 한계와 법적고지</span>
+        <span>회원정보</span>
+        <span>고객센터</span>
+      </div>
+      <div class="copyright">
+        <span>&copy; Copyright NAVER Corp. All Right Reserved</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
