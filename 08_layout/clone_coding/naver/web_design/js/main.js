@@ -76,3 +76,27 @@ next.addEventListener('click', nextSlide); // 다음 이미지 표시
 // }
 
 // showSlides(); // 기본적으로 첫 번째 이미지 표시
+
+
+
+
+//  따라쳐봄
+
+// const slides = document.querySelectorAll('#slides > img');
+// let current = 0;
+
+// function showSlide() {
+//   slides.forEach(function (slideEl) {
+//     slides.style.display = 'none';
+//   });
+
+//   current++;
+//   if (current > slides.length) {
+//     current = 1;
+//   }
+
+//   slides[current - 1].style.display = "block";
+//   setTimeunt(showSlide, 2000);
+// }
+
+// showSlide();
