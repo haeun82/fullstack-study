@@ -1,0 +1,85 @@
+<!-- '웹디자인 기능사' 자격시험 공개 문제로 웹 사이트 레이아웃 연습하기 -->
+<!-- 플러그인, 라이브러리 사용 안됨, 순수 html + css + js 로만 작성 -->
+<!-- 시중 교재에 주로 dov + float를 사용, 우리 예제는 시맨틱 + flex로 다 바꿈 -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dream Jeju</title>
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+  <div id="container">
+    <header>
+      <div id="logo">
+        <h1>Dream Jeju</h1>
+      </div>
+      <nav>
+        <ul id="topMenu">
+          <li>
+            <a href="#">단체 여행 <span>▼</span></a>
+            <ul>
+              <li><a href="#">회사 연수</a></li>
+              <li><a href="#">수학 여행</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">맞춤 여행 <span>▼</span></a>
+            <ul>
+              <li><a href="#">4.3 평화 기행</a></li>
+              <li><a href="#">곶자왈 체험</a></li>
+              <li><a href="#">힐링 워크샵</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">갤러리</a>
+          </li>
+          <li>
+            <a href="#">문의하기</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section id="slideShow">
+      <div id="slides">
+        <img src="./images/photo-1.jpg" alt="slide1">
+        <img src="./images/photo-2.jpg" alt="slide2">
+        <img src="./images/photo-3.jpg" alt="slide3">
+        <button type="button" id="prev">&lang;</button>
+        <button type="button" id="next">&rang;</button>
+      </div>
+    </section>
+    <section id="content">
+      <div id="tabMenu">
+
+      </div>
+      <div id="gallery">
+
+      </div>
+      <div id="link">
+
+      </div>
+    </section>
+    <footer>
+      <div id="bottomMenu">
+
+      </div>
+    </footer>
+  </div>
+
+  <script src="./js/main.js"></script>
+
+</body>
+</html>
+
+<!-- (정리) 레이아웃 구성, 정렬, 배치하는 기술 4가지
+  1. 가로 사이즈를 갖는 블록 요소 하나에 margin: 0 auto;를 주어 가운데 정렬
+  2. position: absolute, fixed
+    2-1. 단순 위치 속성(top / left / right / bottom)으로 배치하는 방법
+    2-2. 가로 또는 세로 사이즈를 지정 + 위치 속성 (top, bottom 또는 left, right를 0으로) + margin: auto;로 가운데배치
+    2-3. left: 50% + margin-left 또는 right: 50% + margin-right로 가운데 배치
+  3. flexbox + justify-content, align-items 등 
+  4. margin, padding 여백을 줘서 콘텐츠 위치 조정
+-->
