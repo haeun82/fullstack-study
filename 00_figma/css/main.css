@@ -63,27 +63,36 @@ header .nav_box .main_menu li:hover>a {
 }
 
 header .nav_box .main_menu .sub_menu {
+  height: 250px;
   position: absolute;
   top: 45px;
   display: flex;
   border: 3px solid #333;
-  padding: 10px;
+  /* padding: 10px; */
+  /* display: none; */
+
 }
 
 header .nav_box .main_menu .sub_menu ul li {
   width: 250px;
   border: transparent;
-  transition: border-bottm 0.5s;
+  padding: 10px 0;
+  
+}
+header .nav_box .main_menu .sub_menu ul li >a {
+  border-bottom: 3px solid transparent; 
+
 }
 
-header .nav_box .main_menu .sub_menu ul li:hover>a {
+/* header .nav_box .main_menu .sub_menu ul li:hover>a {
   border-bottom: 4px solid rgb(85, 81, 255);
+} */
+
+header .nav_box .main_menu li:hover .sub_menu{
+  /* display: block; */
+  /* border-bottom: 4px solid rgb(85, 81, 255); */
 
 }
-
-/* header .nav_box .main_menu li:hover .sub_menu{
-  display: block;
-} */
 
 
 
