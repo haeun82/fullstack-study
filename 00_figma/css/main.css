@@ -12,6 +12,10 @@ a {
 img {
   display: block;
 }
+
+.inner {
+  max-width: 1200px;
+}
 .btn {
   height: 50px;
   border-radius: 10px;
@@ -22,7 +26,11 @@ img {
   color: rgb(255, 255, 255);
   background: rgb(85, 81, 255);
   cursor: pointer;
-  
+  transition: transform .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 /* header */
@@ -40,8 +48,7 @@ header .logo img {
 
 header .nav_box {
   display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: baseline;
 }
 
 header .nav_box .main_menu {
@@ -52,47 +59,90 @@ header .nav_box .main_menu {
 }
 
 header .nav_box .main_menu li {
-  width: 120px;
+  height: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
-
-header .nav_box .main_menu li:hover>a {
-  font-weight: bold;
+header .nav_box .main_menu > li > a {
+  padding: 8px 20px
 }
 
 header .nav_box .main_menu .sub_menu {
-  height: 250px;
   position: absolute;
   top: 45px;
   display: flex;
   border: 3px solid #333;
   /* padding: 10px; */
-  /* display: none; */
-
+  display: none;
+  z-index: 10;
+  background-color: #fff;
 }
 
 header .nav_box .main_menu .sub_menu ul li {
-  width: 250px;
-  border: transparent;
-  padding: 10px 0;
+  width: 200px;
   
 }
-header .nav_box .main_menu .sub_menu ul li >a {
+header .nav_box .main_menu .sub_menu ul li a {
+  /* width: 200px; */
   border-bottom: 3px solid transparent; 
-
+  display: block;
 }
 
-/* header .nav_box .main_menu .sub_menu ul li:hover>a {
-  border-bottom: 4px solid rgb(85, 81, 255);
-} */
+header .nav_box .main_menu .sub_menu ul li:hover a {
+  border-bottom: 3px solid rgb(85, 81, 255);
+  transition: border-bottom .8s;
+}
 
 header .nav_box .main_menu li:hover .sub_menu{
-  /* display: block; */
-  /* border-bottom: 4px solid rgb(85, 81, 255); */
+  display: flex;
+}
+
+
+/* start-design */
+.start-design .inner {
+  /* height: 600px; */
+  margin: 0 auto;
+  display: flex;
+}
+.start-design .inner .start-title {
+  font-size: 90px;
+  line-height: 1.2;
 
 }
+
+
+.start-design .inner .start-title strong {
+  font-weight: 600;
+}
+
+.start-design .inner .start-title span:last-child {
+  font-size: 70px;
+}
+
+.start-design .inner .start-title strong:nth-child(1) {
+  transition: color 1s rgb(85, 81, 255);
+}
+
+.start-design .inner .btn-black {
+  width: 300px;
+  height: 70px;
+  background-color: #333;
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* line-height: 1.2; */
+  font-size: 25px;
+}
+
+.start-design .inner .started {
+  align-self: flex-end;
+}
+
+
+
+
 
 
 
