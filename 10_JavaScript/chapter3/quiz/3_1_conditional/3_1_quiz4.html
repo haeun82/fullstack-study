@@ -17,9 +17,20 @@
 
     const height = prompt('신장을 입력하세요.', '0');
     let msg = '놀이기구 이용 가능';
-    
+    // let confirmParent = '좋은 시간 보내렴~';
+    // const confirmParent = window.confirm('부모님과 함께 왔나요?');
+
     // 풀이4-1
-    
+    if (height >= 150) {
+      document.write(msg);
+    } else if (height < 150) {
+      window.confirm('부모님과 함께 왔나요?');
+      if (true) {
+        document.write('좋은 시간 보내렴~');
+      } else {
+        document.write('어른 모시고 다시 오렴~');
+      }
+    }
   </script>
 </head>
 <body>

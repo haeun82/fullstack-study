@@ -16,16 +16,21 @@
     // 풀이3
     const a = prompt('학년', '0');
     const b = prompt('점수', '0');
+    let c = b < 0 || b > 100;
+    let msg = '합격';
 
-    let msg = 합격
-
-    if (a <= 3 && b >= 60) {
+    if (a <= 3 && b >= 60 || !(a <= 3) && b >= 70 && c) {
       document.write(msg);
-    } else if (!(a <= 3) && b >= 70) {
+      window.alert('에러입니다.');
+    } else {
+      msg = '불합격';
       document.write(msg);
+      window.alert('에러입니다.');
+    }
+    // if (c) {
+    //   window.alert('에러입니다.');
       
-    } 
-  
+    // }
   </script>
 </head>
 <body>
