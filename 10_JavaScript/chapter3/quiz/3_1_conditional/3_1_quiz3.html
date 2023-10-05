@@ -14,23 +14,34 @@
     // (점수가 0미만 100초과이면 "에러입니다." 라는 alert창을 띄우세요.)
 
     // 풀이3
-    const a = prompt('학년', '0');
-    const b = prompt('점수', '0');
+    const a = Number(prompt('학년', '1'));
+    const b = Number(prompt('점수', '0'));
     let c = b < 0 || b > 100;
-    let msg = '합격';
+    let msg = '에러입니다.';
 
-    if (a <= 3 && b >= 60 || !(a <= 3) && b >= 70 && c) {
-      document.write(msg);
-      window.alert('에러입니다.');
-    } else {
-      msg = '불합격';
-      document.write(msg);
-      window.alert('에러입니다.');
-    }
-    // if (c) {
-    //   window.alert('에러입니다.');
-      
+    // if (a <= 3 && b >= 60 || !(a <= 3) && b >= 70 && c) {
+    //   document.write(msg);
+    // } else {
+    //   msg = '불합격';
+    //   document.write(msg);
     // }
+
+    // (a >= 1 && a <= 3 && b >= 60 || a >= 4 && a <= 6 && b >= 70)
+
+    if (b < 0 || b > 100) {
+      document.write(msg);
+    } else {
+      if (a >= 1 && a <= 3 && b >= 60 
+      || a >= 4 && a <= 6 && b >= 70) {
+        msg = '합격';
+      } else {
+        msg = '불합격';
+      }
+    }
+
+      document.write(msg);
+
+
   </script>
 </head>
 <body>

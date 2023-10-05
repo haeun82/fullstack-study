@@ -11,10 +11,45 @@
     // 그 수들의 최대값과 최소값, 합계와 평균을 구해서 브라우저에 출력하세요.
 
     // 풀이5
-    const num1 = prompt('숫자1을 입력하세요.', '0');
-    const num2 = prompt('숫자2을 입력하세요.', '0');
-    const num3 = prompt('숫자3을 입력하세요.', '0');
+    // 주의! 덧셈을 하거나 문자끼리 피하려면 숫자로 변환해 줄 것!!
+    // '11' > '2' => false 앞자리 부터 비교하기 때문에.. 
+    // '11' > 2 = => true
+    const num1 = Number(prompt('정수1', '0'));
+    const num2 = Number(prompt('정수2', '0'));
+    const num3 = Number(prompt('정수3', '0'));
     
+    // 최댓값
+    let max = num1;
+    if (max < num2) {
+      max = num2;
+    }
+    if (max < num3) {
+      max = num3;
+    }
+    // max = Math.max(num1, num2, num3);
+
+    // 최솟값
+    let min = num1;
+    if (max > num2) {
+      max = num2;
+    }
+    if (max > num3) {
+      max = num3;
+    }
+    // max = Math.min(num1, num2, num3);
+
+
+    // 합계 
+    const sum = num1 + num2 + num3;
+
+    // 평균
+    const avg = sum / 3;
+
+    document.write('최댓값: ' + max, '<br>');
+    document.write('최솟값: ' + min, '<br>');
+    document.write('합계: ' + sum, '<br>');
+    document.write('평균: ' + avg, '<br>');
+
   </script>
 </head>
 <body>
