@@ -11,28 +11,27 @@
     // ('수학': '01', '영어': '02', '국어': '03', '국사': '04', 그 외: '00')
 
     // 풀이6
-    const id = prompt('과목입력');
+    const subject = prompt('과목 입력');
+    let code;
 
-
-    switch (id) {
+    switch (subject) {
       case '수학':
-        document.write('01');
+        code = '01';
         break;
       case '영어':
-        document.write('02');
+        code = '02';
         break;
       case '국어':
-        document.write('03');
+        code = '03';
         break;
       case '국사':
-        document.write('04');
+        code = '04';
         break;
       default:
-        document.write('00');
+        code = '00';
         break;
     }
-    document.write(id + '의 과목:');
-
+    document.write(subject + '의 과목코드: ' + code);
   </script>
 </head>
 <body>
