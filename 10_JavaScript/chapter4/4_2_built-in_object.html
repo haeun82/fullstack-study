@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    // 2. 내장 객체(JS에서 기본으로 제공)
+    // 자바스크립트 엔진에 내장되어 필요한 경우 생성하여 사용
+
+    // 1) 날짜 정보 객체: 날짜와 시간에 대한 정보를 제공
+    // 사용성이 떨어져서 날짜 관련 외부 라이브러리 사용을 추천
+    // 변수 = new Date();
+
+    // 오늘 날짜에 대한 정보를 가지고 있는 객체 생성
+    const today = new Date();
+    const nowYear = today.getFullYear();
+    const nowMonth = today.getMonth(); // 0~11: 현재 월보다 1 적게 나옴
+    const nowDate = today.getDate();
+    const nowDay = today.getDay(); // 0~6: 일~토
+
+    document.write('<h1>오늘 날짜 정보</h1>');
+    document.write('날짜 정보(기본 포맷): ' + today, '<br>');
+    document.write('현재 연도: ' + nowYear, '<br>');
+    document.write('현재 월: ' + nowMonth, '<br>');
+    document.write('현재 일: ' + nowDate, '<br>');
+    document.write('현재 요일: ' + nowDay, '<br>');
+    document.write(nowYear + '/' + (nowMonth + 1) + '/' + nowDate  , '<br>');
+
+    // 특정 날짜 정보를 갖는 날짜 객체 생성
+    // new Date(연, 월, 일, 시, 분, 초 ,밀리초);
+    // 변수 = new Date(연, 월 - 1, 일);
+    // 변수 = new Date(연/월/일);
+    // 변수 = new Date(연-월-일);
+
+    const someday = new Date(2023, 11, 31);
+    // const someday = new Date('2023/12/31');
+    // const someday = new Date('2023-12-31');
+
+    const theYear = someday.getFullYear();
+    const theMonth = someday.getMonth();
+    const theDate = someday.getDate();
+    const theDay = someday.getDay();
+
+    document.write('날짜 정보(기본 포맷): ' + someday, '<br>');
+    document.write('특정 연도: ' + theYear, '<br>');
+    document.write('특정 월: ' + theMonth, '<br>');
+    document.write('특정 일: ' + theDate, '<br>');
+    document.write('특정 요일: ' + theDay, '<br>');
+
+    // 특정 날짜까지 D-day 구하기
+    // 남은 일 수(밀리초) = 특정 날짜 객체 시간 - 현재 날짜 객체 시간
+    // 1초 = 1000ms
+    // 1분(60초) = 1000 * 60ms
+    // 1시간(60분) = 1000 * 60 * 60ms
+    // 1일(24시간) = 1000 * 60 * 60 * 24ms
+
+    const classEndDate = new Date(2024, 0, 18);
+    const diffDate = classEndDate.getTime() - today.getTime();
+    // getTime(): 1970년 1월 1일 0시 0분 0초로부터 시작해서 지금까지 몇 ms가 지났는지
+
+    const result = Math.ceil(diffDate / (1000 * 60 * 60 * 24)); // Math.ceil(); - 하루중 남은 시간 올림해줌
+    document.write('<h1>오늘부터 종강까지 남은 일수</h1>');
+    document.write('D-day: ' + result + '일 남았습니다.');
+
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
