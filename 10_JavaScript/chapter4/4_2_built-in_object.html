@@ -246,7 +246,7 @@
     // 숫자 데이터 내림차순
     console.log(score.sort(function(a, b) { return b - a;}));
 
-    // 배열의 객체의 메소드(1)
+    // 배열의 객체의 메소드(2)
     const greenArr = ['교대', '방배', '강남'];
     const yelloArr = ['미금', '정자', '수서'];
 
@@ -265,6 +265,26 @@
     console.log(yelloArr);
     yelloArr.unshift(popData); // 배열의 시작부분에 새 요소 추가 (원본 배열 변경됨)
     console.log(yelloArr);
+
+    // 배열 객체의 메소드(3) - 검색
+    const fruits = ['Banana', 'Orange', 'Apple', 'Mango', 'Apple'];
+
+    // indexOf(): 지정된 값에 첫번째 인덱스를 반환, 찾을 수 없는 경우 -1 반환
+    let index = fruits.indexOf('Apple');
+    console.log(index);
+    index = fruits.indexOf('Apple', 3); // 검색 시작 위치 지정
+    console.log(index);
+
+    // includes(): 지정된 값이 포함된 경우 true 반환, 포함되지 않은 경우 false 반환 (ES7차)
+    console.log(fruits.includes('Mango'));
+    console.log(fruits.includes('Banana', 3)); // 검색 시작 위치 지정
+
+
+
+
+
+
+
 
 
 
