@@ -20,7 +20,7 @@
 
     // 샘플 코드
     const imgFileExt = ['jpg', 'png', 'gif'];
-    let fileExt;
+    // let fileExt;
     const fileInput = document.querySelector('input[type=file]');
 
     // 첨부된 파일에 변화가 감지되었을때 'change' 이벤트 발생
@@ -28,8 +28,16 @@
       // debugger;
       console.log(fileInput); // input DOM 객체
       console.log(fileInput.files[0].name); // FileList 객체
-      const type = fileInput.files[0].name;
-      fileExt = substring(0,type.length - 3); 
+      const fileName = fileInput.files[0].name;
+      const fileExt = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+      console.log(fileExt);
+
+      if (!imgFileExt.includes(fileExt)) {
+        alert('이미지 파일이 아닙니다!');
+      }
+
+
+
     });
 
     // 풀이5
