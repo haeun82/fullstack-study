@@ -51,6 +51,23 @@
     console.log(calculate(100,undefined,0.15));  // 깔끔하지 않음,
     // 개선할 방법은 디스트럭처링!(구조분해할당문법)
 
+    // 구조 분해 할당을 통해 개선한 코드
+    // 함수 호출 시 인자값을 객체로 넘기고 매개변수에서 구조 분해 할당
+    // 장점: 매개변수의 순서에 신경 안써도 되고 필요한 값만 넘겨주면 됨
+
+    function calculate2({ total = 0, tax = 0.2, tip = 0.1 } = {}) {
+      // tax나 tip에다가 값을 할당하지 않으면 기본값으로 0.2와 0.1이 쓰인다!
+      return total + (total * tax) + (total * tip);
+    }
+    console.log(calculate2({ total: 100, tip: 0.15 })); // 장점1: 필요한 값만 넘기면 됨
+    console.log(calculate2({ tip: 0.15, total: 100 })); // 장점2: 순서가 바뀌어도 됨 /상관 x
+    console.log(calculate2({})); // 0 // NaN이 안나오려면 기본값을 다 지정해줘야됨
+
+    // 구조 분해 할당이 일어나지 않는 경우
+    console.log(calculate2()); // 0
+    // console.log(calculate2(undefined));
+
+
     // Quiz 
     // 3.1 다음 작업을 수행하는 코드를 작성해보자.
     // 다음 코드에서 arg1과 arg2를 변경하여 첫 번째는 tax를 나타내고 두 번째는 tip의 값을 나타내게 만들어보자.

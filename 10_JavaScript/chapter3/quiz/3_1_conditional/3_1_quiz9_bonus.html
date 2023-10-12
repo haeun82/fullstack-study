@@ -20,39 +20,68 @@
     // 3) 돈이 모자랄 때 에러 메시지 출력 후 새로고침(location.reload();)
 
     const money = Number(prompt('돈을 넣어주세요.', '0'));
-    const snack = prompt('과자를 입력해주세요');
     let snackPrice = Number(1300);
 
     let change = 0; // 거스름돈
     
     // 풀이
-    if (money <= 0) {
-      alert('돈이 입력되지 않았습니다!!');
-      location.reload();
-    }  
+    // if (money <= 0 || isNaN(money)) {
+    //   alert('돈을 다시 넣어주세요!!');
+    //   location.reload();
+    // }  
     
-    if (money < snackPrice) {
-        alert('금액이 부족합니다!!');
+    // if (money < snackPrice) {
+    //     alert('금액이 부족합니다!!');
+    //     location.reload();
+    // }
+    
+    // if (snack == '허니버터' && money >= snackPrice) {
+    //   change = money - snackPrice;
+    //   document.write(snack + '<br>' + '거스름돈: ' + change);
+
+    // } else if (snack == '칸쵸' && money >= snackPrice) {
+    //   snackPrice = Number(1500);
+    //   change = money - snackPrice;
+    //   document.write(snack + '<br>' + '거스름돈: ' + change);
+    // } else if (snack == '프링글스' && money >= snackPrice) {
+    //   snackPrice = Number(3000);
+    //   change = money - snackPrice;
+    //   document.write(snack + '<br>' + '거스름돈: ' + change);
+    // }
+
+    // if (!(snack == '허니버터' || snack == '칸쵸' || snack == '프링글스')) {
+    //   alert('자판기에 없는 과자입니다!!');
+    //   location.reload();
+    // }
+
+    if (money <= 0 || isNaN(money)) {
+      alert('돈을 다시 넣어주세요!');
+      location.reload();
+    } else {
+      const snack = prompt('과자를 입력해주세요(칸쵸,허니버터,프링글스 택1)');
+
+      switch (snack) {
+        case '허니버터':
+          change = money - 1300;
+          break;
+        case '칸쵸':
+          change = money - 1500;
+          break;
+        case '프링글스':
+          change = money - 3000;
+          break;
+        default: // 자판기에 없는 과자 종류 입력 시
+          alert('자판기에 없는 과자입니다.');
+          location.reload();
+          break;
+      }
+
+      if (change < 0) { // 돈이 모자랄 때
+        alert('돈이 모자랍니다.');
         location.reload();
-    }
-    
-    if (snack == '허니버터' && money >= snackPrice) {
-      change = money - snackPrice;
-      document.write(snack + '<br>' + '거스름돈: ' + change);
+      }
 
-    } else if (snack == '칸쵸' && money >= snackPrice) {
-      snackPrice = Number(1500);
-      change = money - snackPrice;
-      document.write(snack + '<br>' + '거스름돈: ' + change);
-    } else if (snack == '프링글스' && money >= snackPrice) {
-      snackPrice = Number(3000);
-      change = money - snackPrice;
-      document.write(snack + '<br>' + '거스름돈: ' + change);
-    }
-
-    if (!(snack == '허니버터' || snack == '칸쵸' || snack == '프링글스')) {
-      alert('자판기에 없는 과자입니다!!');
-      location.reload();
+      document.write(`${snack} 나왔습니다!<br>거스름돈은 ${change}원 입니다.`);
     }
   </script>
 </head>
