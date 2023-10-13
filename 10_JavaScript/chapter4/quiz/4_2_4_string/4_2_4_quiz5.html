@@ -28,6 +28,8 @@
       // debugger;
       console.log(fileInput); // input DOM 객체
       console.log(fileInput.files[0].name); // FileList 객체
+      console.log(Array.from(fileInput.files[0].name)); // 실제 배열로 변환
+
       const fileName = fileInput.files[0].name;
       const fileExt = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
       console.log(fileExt);
@@ -35,9 +37,6 @@
       if (!imgFileExt.includes(fileExt)) {
         alert('이미지 파일이 아닙니다!');
       }
-
-
-
     });
 
     // 풀이5
