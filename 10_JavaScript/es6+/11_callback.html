@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    // 동기(synchronous)와 비동기(asynchronous)의 개념
+    // 자바스크립트는 동기적으로 작동한다.
+    // 일반적으로 각 코드 블록이 이전 블록이 끝난 이후에 순차적으로  실행
+    console.log(1);
+    setTimeout(() => { // 끝날 때 까지 기다리지 않고 다음으로 넘어감(비동기)
+        console.log(2);
+        
+    }, 1000);
+    console.log(3);
+
+    // 비동기는 왜 필요할까?
+    // 어떤 명령어를 실행할 때 그 명령이 언제 끝날지 예측하기 어렵거나 또는 주가 되는 작업이 아닐 때 사용
+    // 브라우저와 서버가 통신할 때 언제 끝날지 예측하기 힘듦 (인터넷이 느리거나, 서버가 느리거나)
+    // 통신이 끝날 때까지 아무것도 못하고 있는 것 보다 다른 일을 하고 있다가 통신이 끝났을 때 콜백이 호출되면서 필요한 작업을 나중에 하면 훨씬 효율적
+    // 동기적으로 동작한다면 데이터를 가져오기 전까지 사용자는 빈 화면만 보고 있어야 함
+
+    // 비동기 통신의 예 - fetch() (ES6)
+    // Fetch API를 사용하면 웹 브라우저가 웹 서버에 HTTP 요청을 할 수 있음
+    const data = fetch('api-url'); // 이 예에서는 fetch를 사용하여 어떤 URL에서 데이터를 가져온다고 가정
+    console.log('Finished'); //fetch가 호출된 직후 바로 실행됨
+    console.log(data); // 서버에서 data를 받아오기도 전임
+
+    // 만약 동기적으로 동작한다면, fetch 작업이 완료된 후에 다음 행이 실행될거라 예상하지만
+    // 실제로는 fetch가 호출된 직후 바로 다음행이 실행된다.
+    // fetch가 비동기 함수이기 때문에..
+
+    // 이를 해결하기 위해 1. callback 또는 2. promise 를 사용하면 fetch()가 무언가를 반환하는 시점에서 기다리게 할 수 있다.
+
+    // 1-1. 콜백
+    // "내가 전달한 함수를 나중에 다시 불러줘(호출해줘)" = Callback
+    // 콜백은 다른 함수를 인자값으로 전달되는 함수를 말함
+    // 함수가 다른 함수를 호출할 수 있고 또한 함수가 완료된 후 콜백함수를 실행할 수도 있음
+    // 주로 (비동기를) 순차적으로 실행하고 싶을 때 사용
+
+    // 콜백 예1: 계산기 기능과 디스플레이 기능
+    function myDisplayer(some) {
+        document.write(some, '<br>');
+    }
+    
+    function myCalculator(num1, num2, myCallback) {
+        const sum = num1 + num2;
+        myCallback(sum);
+    }
+
+    myCalculator(5, 10, myDisplayer); // 인자값으로 전달하는 myDisplayer가 콜백 함수!
+    // 계산기 함수에서 디스플레이 함수를 호출
+    // 계산 기능이 끝난 다음에 디스플레이 기능을 실행한 것
+
+    // 콜백 예2: 
+    </script>
+</head>
+<body>
+</body>
+</html>
