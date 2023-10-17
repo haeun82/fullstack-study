@@ -45,11 +45,242 @@
     // 코드를 보면 user 객체가 work 속성의 존재 여부를 묻는 것처럼 읽히고,
     // 존재한다면 title 속성에 접근 / 존재하지 않으면 에러가 발생하는 대신에 undefined 반환
 
+    // 예제2: 선택적 속성이 깊게 중첩된 객체
+    const elon = {
+      name: 'Elon Musk',
+      education: {
+        primary_school: { /* 초등학교 관련 데이터 */ },
+        middle_school: { /* 중학교 관련 데이터 */ },
+        high_school: { /* 고등학교 관련 데이터 */ },
+        university: {
+          name: 'University of Pennsylvania',
+          graduation: {
+            year: 1995
+          }
+        }
+      }
+    };
+
+    const mark = {
+      name: 'Mark Zuckerberg',
+      education: {
+        primary_school: { /* 초등학교 관련 데이터 */ },
+        middle_school: { /* 중학교 관련 데이터 */ },
+        high_school: { /* 고등학교 관련 데이터 */ },
+        university: {
+          name: 'Harvard University'
+        }
+      }
+    };
+
+    const ceos = [elon, mark];
+    // 선택적 속성: education, University, graduation 이라고 가정
+
+    // 두 사람의 대학 졸업 연도에 접근하고 싶다면?
+    // 옵셔널 체이닝 미사용
+    let graduationYear;
+    for (const ceo of ceos) {
+      if (ceo.education &&
+          ceo.education.university &&
+          ceo.education.university.graduation) {
+        graduationYear = ceo.education.university.graduation.year;
+        
+      }
+    }
+
+    // 옵셔널 체이닝 사용
+    for (const ceo of ceos) {
+        graduationYear = ceo.education?.university?.graduation?.year;
+    }
+
+    // Quiz
+    const user = {
+      name: 'Goni',
+      age: 27,
+      work: {
+        title: 'software developer'
+      }
+    };
+
+    const res = user?.work?.location ? user?.work?.location : user?.work?.title;
+    console.log(res);
+
+    // 1) location
+    // 2) title
+    // 3) 'software developer' @
+    // 4) undefined
+
+    // 15.2
+    // 아래와 같은 객체 구조에서 옵셔널 체이닝을 사용하여 대학 전공에 접근해보세요.
+    // (optional 이라는 주석이 붙은 속성은 있을 수도 있고, 없을 수도 있는 선택적 속성임)
+    const person = {
+      name: 'JH Kim',
+      job: 'teacher',
+      education: { // optional
+        high_school: { // optional 
+          name: 'Songdo'
+        },
+        university: { // optional
+          name: 'Incheon Hawaii',
+          major: 'ICE'
+        }
+      }
+    };
+
+    // 옵셔널 체이닝 미사용시
+    let universityMajor;
+    if (person.education && 
+        person.education.university) {
+      universityMajor = person.education.university.major;
+    }
+    console.log(universityMajor);
+
+    // 옵셔널 체이닝 사용시
+    // 여기에 코드 작성
+    
+    universityMajor = person.education?.university?.major;
+    console.log(universityMajor);
 
 
+    // const yourName = prompt('당신의 이름은?');
+    // if (yourName === '') {
+    //   alert('이름이 입력되지 않았습니다!');
+    //   location.reload();
+    // } else {
+    //   document.write(`${yourName}님 환영합니다!`);
+      
+    // }
+
+    // const userId = prompt('아이디 입력');
+
+    // result =  userId || 'guest';
+    // console.log(result);
+    // let sum = 0;
+
+    // for (let i = 1; i <= 100; i++) {
+    //   const a = i % 2 === 0;
+    //   sum += a;
+    // }
+    // console.log(sum);
+
+    // let num = 6;
+    // for (let i = 1; i <= 6; i++) {
+    //   for (let j = 1; j <= 6; j++) {
+    //     num = i + j;
+    //     if (num === 6) {
+    //       document.write([i , j], '<br>');
+    //     }
+    //   }
+    // }
+
+    // const fileName = '기획서 수정.최종본.진짜마지막.PDF';
+
+    // const result = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+    // console.log(result);
+
+    // function hello(val) {
+    //   return 'Hello ' + val;
+    // }
+    // val => 'Hello ' + val;
+    
+    // const race = '100m dash';
+    // const runners = ['Kim', 'Lee', 'Park'];
+
+    // const results = runners.map((runner, index) => {
+    //   return {
+    //     name: runner,
+    //     race: race,
+    //     place: index + 1
+    //   };
+    // });
+    // console.log(results);
+    
+    // const name = 'JH Kim';
+    // const age = 30;
+    // const hobby = 'badminton';
+    // // const greeting = 'Hello my name is ' + name + '. I\'m ' + age + ' years old. My hobby is playing ' + hobby + '.';
+    // const greeting = `Hello my name is ${name}. I'm ${age} years old. My hobby is playing ${hobby}.`;
+    // console.log(greeting);
+
+  //   const action = {
+  //   type: 'action/name',
+  //   payload: {
+  //     id: '1',
+  //     title: '메인 화면 구성하기',
+  //     content: '메인 이미지와 아이템 목록 만들기',
+  //     done: true
+  //     }
+  //   };
+
+  // const { type, payload: {id, title, content, done} } = action; // 여기에 작성
+  // console.log(type, id, title, content, done);
+  // type, id, title, content, done
+
+  // const moneyList = [2000000, 240000, 3000000, 1500];
+  // const returnMoney = moneyList.map(money => money *= 0.1);
+  
+  // console.log(returnMoney);
+
+  // const members = [
+  //   { id: 'a1', name: 'Goni', age: 36 },
+  //   { id: 'a2', name: 'Pony', age: 32 },
+  //   { id: 'a3', name: 'Tony', age: 12 },
+  //   { id: 'a4', name: 'Moly', age: 24 },
+  //   { id: 'a5', name: 'Noni', age: 45 }
+  // ];
+  // const deleteMember = members.filter(member => member.id !== 'a3');
+  // console.log(deleteMember);
+
+  // const userInfo = {
+  // name: 'Goni Kim',
+  // age: 30
+  // };
+  // // email: 'geoblo@naver.com'
+
+  // const userInfo1 = {
+  // ...userInfo,
+  // email: 'geoblo@naver.com'
+  // };
+  // console.log(userInfo1);
+
+  // const key = prompt('추가하고 싶은 속성은?');
+  // const value = prompt('추가하고 싶은 값은?');
+
+  // const myInfo = {
+  //   name: 'Goni Kim',
+  //   age: 30,
+  //   [key]: value 
+  // };
+  // console.log(myInfo);
+
+  const input = prompt('문장을 입력해주세요');
+
+  const inputArray = [input.replace(' ', '')];
+  console.log(inputArray);
+
+  
+  
+
+
+  // const short = input.substring(indexOf(' ') - 2);
+  // console.log(short);
+  
+
+
+
+
+
+
+
+
+  // const a1 = ['Kim', 'Lee', 'Park'];
+  // const a2 = 'Choi';
+
+  // const a1Copy = [...a1];
+  // a1Copy.push('Choi');
+  // console.log(a1Copy);
   </script>
 </head>
 <body>
-  
 </body>
 </html>
