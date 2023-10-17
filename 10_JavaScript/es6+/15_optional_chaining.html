@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    // ?. 옵셔널 체이닝 연산자(ES2020)
+    // 예제1: 사용자를 나타내는 간단한 객체
+    const user1 = {
+      name: 'Goni',
+      age: 27,
+      work: {
+        title: 'software developer',
+        location: 'Korea'
+      }
+    };
+
+    const user2 = {
+      name: 'Tom',
+      age: 28
+    };
+
+    // 위 예제에서 사용자의 직업명(title)에 접근 하고 싶을 때
+    // work는 user객체의 선택적 속성(user1에는 있지만 user2에는 없는)이므로 다음과 같이 작성
+    const users = [user1, user2];
+    let jobTitle;
+
+    for (const user of users) {
+      // jobTitle = user.work.title; // 에러 발생
+
+      if (user.work) {
+        jobTitle = user.work.title;
+        console.log(jobTitle);
+      }
+    }
+    // 즉, work의 title 속성에 접근하기 전에 user 객체가 실제로 work 속성을 갖고 있는지 확인해야 함
+    // 접근하려는 속성이 깊게 중첩되어 있는 경우 코드가 복잡해짐
+    // 이 떄 옵셔널 체이닝을 사용하면 코드가 간결힘
+    for (const user of users) {
+        jobTitle = user.work?.title;
+        console.log(jobTitle);
+    }
+    // 코드를 보면 user 객체가 work 속성의 존재 여부를 묻는 것처럼 읽히고,
+    // 존재한다면 title 속성에 접근 / 존재하지 않으면 에러가 발생하는 대신에 undefined 반환
+
+
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
