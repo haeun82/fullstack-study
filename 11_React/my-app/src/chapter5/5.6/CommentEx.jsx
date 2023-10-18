@@ -1,9 +1,12 @@
 import Avatar from "./Avatar";
 import UserInfo from "./UserInfo";
 
+
+
 // 댓글 컴포넌트
 // 실제 렌더링은 안하고 단순 연습용 예제 
 function CommentEx(props) {
+	console.log(props);
 	return (
 		<>
 			<div className="comment">
@@ -22,4 +25,4 @@ function CommentEx(props) {
 	);
 }
 
-// export default CommentEx;
+export default CommentEx;

@@ -4,7 +4,12 @@ function Avatar(props) {
 		// user로 바꿔줌
 		<img className="avatar" 
 				src={props.user.avatarUrl} 
-				alt={props.user.name} 
+				alt={props.user.name}
+				style={{
+					width: 50,
+					height: 50,
+					borderRadius: '50%'
+				}}
 			/>
 	);
 }

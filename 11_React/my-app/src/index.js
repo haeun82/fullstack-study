@@ -9,6 +9,9 @@ import Clock from './chapter4/Clock';
 import PropsUse from './chapter5/5.3/PropsUse';
 import Comment from './chapter5/Comment';
 import CommentList from './chapter5/CommentList';
+import CommentEx from './chapter5/5.6/CommentEx';
+import UserInfo from './chapter5/5.6/UserInfo';
+import Avatar from './chapter5/5.6/Avatar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -31,7 +34,15 @@ root.render(
 
     // 5장 예제
     // <PropsUse />
-    <CommentList />
+    // <CommentList />
+    <CommentEx 
+        author= {{
+            name: '하은',
+            avatarUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png'
+        }}
+        text="안녕하세요! 하은입니다."
+        date="2023-10-18"
+    />
 );
 
 // If you want to start measuring performance in your app, pass a function
