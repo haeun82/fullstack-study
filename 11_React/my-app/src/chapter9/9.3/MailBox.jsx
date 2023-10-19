@@ -1,6 +1,9 @@
 function MailBox(props) {
 	const unreadMessages = props.unreadMessages;
 
+	const count = 0;
+
+
 	return (
 		<>
 			<h1>안읽은 메일 보관함</h1>
@@ -14,6 +17,14 @@ function MailBox(props) {
 					})}
 				</>
 			)}
+
+			{/* 주의!
+				falsy이면 && 뒤에 있는 표현식은 무시하고 건너 뛰지만 
+				falsy 표현식이 반환 된다는 것에 주의(falsy 표현식에 따라서 화면에 출력될 수도 있음)
+			*/}
+			{false}
+			{/* {false && <h1>Messages: {count}</h1>} 실행 안됨 */}
+			{/* {count && <h1>Messages: {count}</h1>} false가 아닌 0이기 때문에 화면에 출력됨 */}
 		</>
 	);
 }
