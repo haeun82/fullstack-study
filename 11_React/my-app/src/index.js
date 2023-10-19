@@ -15,6 +15,13 @@ import Avatar from './chapter5/5.6/Avatar';
 import NotificationList from './chapter6/NotificationList';
 import Counter from './chapter7/7.2/Counter';
 import SetStateMerge from './chapter7/7.2/SetStateMerge';
+import Toggle from './chapter8/8.1/Toggle';
+import MyButton from './chapter8/8.2/MyButton';
+import ConfirmButton from './chapter8/ConfirmButton';
+import Greeting from './chapter9/9.1/Greeting';
+import LoginControl from './chapter9/9.2/LoginControl';
+import LoginControlRefactoring from './chapter9/9.3/LoginControlRefactoring';
+import MailBox from './chapter9/9.3/MailBox';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -26,6 +33,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //         <Clock />
 //     );
 // }, 1000);
+
+// 9장 예제
+const messages =['React', 'Re: React', 'Re:Re: React'];
+// const messages =[]; 
 
 root.render(
     // <App />
@@ -46,9 +57,24 @@ root.render(
     //     text="안녕하세요! 하은입니다."
     //     date="2023-10-18"
     // />
+
+    // 6장 예제
     // <NotificationList />
+
+    // 7장 예제
     // <Counter />
-    <SetStateMerge />
+    // <SetStateMerge />
+
+    // 8장 예제
+    // <Toggle />
+    // <MyButton />
+    // <ConfirmButton />
+
+    // 9장 예제
+    // <Greeting isLoggedIn={true}/>
+    // <LoginControl />
+    // <LoginControlRefactoring />
+    <MailBox unreadMessages={messages} />
 );
 
 // If you want to start measuring performance in your app, pass a function
