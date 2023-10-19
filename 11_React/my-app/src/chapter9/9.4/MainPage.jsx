@@ -26,7 +26,7 @@ function WarningBanner(props) {
 }
 
 function DangerBanner(props) {
-	console.log(props.warn);
+	// console.log(props.warn);
 	return (
 		<div style={styles.warning}>Danger!</div>
 	);
