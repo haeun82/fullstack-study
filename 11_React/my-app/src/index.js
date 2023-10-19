@@ -14,6 +14,7 @@ import UserInfo from './chapter5/5.6/UserInfo';
 import Avatar from './chapter5/5.6/Avatar';
 import NotificationList from './chapter6/NotificationList';
 import Counter from './chapter7/7.2/Counter';
+import SetStateMerge from './chapter7/7.2/SetStateMerge';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -46,7 +47,8 @@ root.render(
     //     date="2023-10-18"
     // />
     // <NotificationList />
-    <Counter />
+    // <Counter />
+    <SetStateMerge />
 );
 
 // If you want to start measuring performance in your app, pass a function
