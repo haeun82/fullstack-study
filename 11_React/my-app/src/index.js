@@ -23,6 +23,11 @@ import LoginControl from './chapter9/9.2/LoginControl';
 import LoginControlRefactoring from './chapter9/9.3/LoginControlRefactoring';
 import MailBox from './chapter9/9.3/MailBox';
 import Mainpage from './chapter9/9.4/MainPage';
+import Toolbar from './chapter9/Toolbar';
+import LandingPage from './chapter9/LandingPage';
+import NumberList from './chapter10/10.1/NumberList';
+import ListKey from './chapter10/10.2/ListKey';
+import AttendanceBook from './chapter10/AttendanceBook';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -76,7 +81,14 @@ root.render(
     // <LoginControl />
     // <LoginControlRefactoring />
     // <MailBox unreadMessages={messages} />
-    <Mainpage />
+    // <Mainpage />
+    // <Toolbar />
+    // <LandingPage />
+
+    // 10장 예제
+    // <NumberList />
+    // <ListKey />
+    <AttendanceBook />
 );
 
 // If you want to start measuring performance in your app, pass a function
