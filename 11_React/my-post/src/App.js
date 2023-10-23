@@ -27,6 +27,11 @@ function App() {
   // const [ likeCount, setLikeCount ] = useState([0, 0, 0]); // 글 수에 맞게 배열로 만들기
   const [ inputValue, setInputValue ] = useState('');
 
+  const handleOnClick = () => {
+    setInputValue();
+
+  };
+
   return (
     <>
       {/* 상단 헤더 만들기 */}
@@ -46,15 +51,17 @@ function App() {
         {posts.map((post, index) => {
           console.log(post, index);
           return (
-            <div key={posts.id} className='list' 
+            <div key={post.id} className='list' 
+            
             onClick={() => {
               setShowPostDetail(true);
               setCurrentIndex(index);
+              console.log(post.id);
             }}
             >
               <h4>{post.title}</h4>
-              <p>{posts.date}</p>
-              <p>{posts.author}</p>
+              <p>{post.date}</p>
+              <p>{post.author}</p>
 
               <hr />
 
