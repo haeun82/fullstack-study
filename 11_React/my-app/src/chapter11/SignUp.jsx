@@ -18,7 +18,6 @@ function SignUp() {
 	});
 
 	const { name, gender } = Inputs;
-	// console.log(labelInputs);
 
 	const handleInputsChange = (e) => {
 		const { value, name } = e.target;
