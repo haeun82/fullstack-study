@@ -1,22 +1,41 @@
 import { useState } from "react";
 
 function SignUp() {
-	const [name, setName] = useState('');
-	const [gender, setGender] = useState('남자');
+	// const [name, setName] = useState('');
+	// const [gender, setGender] = useState('남자');
 
-	const handleChangeName = (e) => {
-		setName(e.target.value);
-	};
+	// const handleChangeName = (e) => {
+	// 	setName(e.target.value);
+	// };
 
-	const handleChangeGender = (e) => {
-		setGender(e.target.value);
+	// const handleChangeGender = (e) => {
+	// 	setGender(e.target.value);
+	// };
+
+	const [ Inputs, setInputs ] = useState({
+		name: '',
+		gender: '남자'
+	});
+
+	const { name, gender } = Inputs;
+	// console.log(labelInputs);
+
+	const handleInputsChange = (e) => {
+		const { value, name } = e.target;
+		console.log(value, name);
+
+		const copyInpust = {
+			...Inputs
+		};
+
+		copyInpust[name] = value;
+		setInputs(copyInpust);
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		alert(`이름: ${name}, 성별: ${gender}`);
 	};
-
 
 	return (
 		<form onSubmit={handleSubmit}>
@@ -25,13 +44,14 @@ function SignUp() {
 				<input 
 				type="text" 
 				value={name}
-				onChange={handleChangeName}
+				name="name"
+				onChange={handleInputsChange}
 				/>
 			</label>
 			<br />
 			<label>
 				성별:
-				<select onChange={handleChangeGender} value={gender}>
+				<select onChange={handleInputsChange} value={gender} name="gender">
 					<option value="남자">남자</option>
 					<option value="여자">여자</option>
 				</select>
