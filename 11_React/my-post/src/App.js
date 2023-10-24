@@ -52,7 +52,6 @@ function App() {
           console.log(post, index);
           return (
             <div key={post.id} className='list' 
-            
             onClick={() => {
               setShowPostDetail(true);
               setCurrentIndex(index);
