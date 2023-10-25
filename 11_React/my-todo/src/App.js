@@ -49,7 +49,6 @@ function App() {
       text: '단계별 실습 예제 만들기',
       checked: false
     }
-
   ]);
 
   // todos 배열에 새 객체를 추가하기 위한 함수 정의
@@ -73,11 +72,23 @@ function App() {
     // setTodos([...todos, todo]);
 
     // 방법2 -  배열의 메소드 이용
+    // 불변성을 지키면서 배열의 요소를 추가해야할 때 concat 사용
     setTodos(todos.concat(todo));
-    
+
     nextId.current += 1; // nextId에 1씩 더하기
+  };
 
+  // todos 배열에서 id값으로 항목을 지우기 위한 함수 정의
+  const handleRemove = (id) => {
+    // 방법1
+    // const copyTodos = [...todos];
+    // const targetIndex = todos.findIndex(todo => todo.id === id);
+    // copyTodos.splice(targetIndex, 1);
+    // setTodos(copyTodos);
 
+    // 방법2 - 배열의 메소드 이용
+    // 불변성을 지키면서 배열의 요소를 제거해야할 때 filter 사용
+    setTodos(todos.filter(todo => todo.id !== id));
   };
 
   return (
@@ -86,7 +97,7 @@ function App() {
       <GlobalStyle />
       <TodoTemplate>
         <TodoInsert onInsert={handleInsert}/>
-        <TodoList todos={todos}/>
+        <TodoList todos={todos} onRemove={handleRemove}/>
       </TodoTemplate>
     </>
   );

@@ -61,16 +61,16 @@ const Remove = styled.div`
 // 각 할 일 항목에 대한 정보를 보여주는 컴포넌트
 // todo 객체를 props로 받아와 상태에 따라 다른 스타일의 UI를 보여줌
 function TodoListItem(props) {
-	const { todo:{ id, text, checked } } = props;
+	const { todo:{ id, text, checked }, onRemove } = props;
 	// console.log(props);
-	
+
 	return (
 		<TodoListItemWrapper>
 			<CheckBox checked={checked}>
 				{checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
 			</CheckBox>
 			<Text checked={checked}>{text}</Text>
-			<Remove>
+			<Remove onClick={() => { onRemove(id); }}>
 				<MdRemoveCircleOutline />
 			</Remove>
 		</TodoListItemWrapper>
