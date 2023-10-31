@@ -48,6 +48,7 @@ import Blocks from './chapter15/theme/Blocks';
 import ThemeApp from './chapter15/theme/ThemeApp';
 import ComponentVariable from './chapter7/7.6/ComponentVariable';
 import SimpleRouter from './chapter16/SimpleRouter';
+import ApiRequest from './chapter17/ApiRequest';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -137,7 +138,10 @@ root.render(
     // <ThemeApp />
 
     // 16장 예제
-    <SimpleRouter />
+    // <SimpleRouter />
+
+    // 17장 예제
+    <ApiRequest />
 );
 
 // If you want to start measuring performance in your app, pass a function
