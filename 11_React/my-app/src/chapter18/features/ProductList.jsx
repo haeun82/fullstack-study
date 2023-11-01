@@ -39,9 +39,7 @@ function ProductList(props) {
       </p>
       <p>상품 목록</p>
       <ul>
-        {productList.map((product, index) => {
-          return <li key={index}>{product}</li>
-        })}
+        {productList.map((product, index) => <li key={index}>{product}</li>)}
       </ul>
     </>
   );
