@@ -54,6 +54,7 @@ import SimpleRouter from './chapter16/SimpleRouter';
 import ApiRequest from './chapter17/ApiRequest';
 import ReduxTestApp from './chapter18/ReduxTestApp';
 import { store } from './chapter18/app/Store';
+import ProductList from './chapter18/features/ProductList';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -154,6 +155,7 @@ root.render(
     // Dedux Store에 저장된 state들을 마음대로 꺼내 쓸 수 있음
     <Provider store={store}>
         <ReduxTestApp />
+        <ProductList />
     </Provider>
 );
 
