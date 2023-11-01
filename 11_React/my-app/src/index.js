@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import { Provider } from "react-redux";
+
 import JsxUse from './chapter3/3.4/JsxUse';
 import Library from './chapter3/Library';
 import Clock from './chapter4/Clock';
@@ -49,6 +52,8 @@ import ThemeApp from './chapter15/theme/ThemeApp';
 import ComponentVariable from './chapter7/7.6/ComponentVariable';
 import SimpleRouter from './chapter16/SimpleRouter';
 import ApiRequest from './chapter17/ApiRequest';
+import ReduxTestApp from './chapter18/ReduxTestApp';
+import { store } from './chapter18/app/Store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -141,7 +146,15 @@ root.render(
     // <SimpleRouter />
 
     // 17장 예제
-    <ApiRequest />
+    // <ApiRequest />
+
+    // 18장 예제
+    // 2. 리액트에 Redux Store 제공하기
+    // ReduxTestApp 컴포넌트와 그 하위 자식들은 Redux Store에 접근 가능
+    // Dedux Store에 저장된 state들을 마음대로 꺼내 쓸 수 있음
+    <Provider store={store}>
+        <ReduxTestApp />
+    </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

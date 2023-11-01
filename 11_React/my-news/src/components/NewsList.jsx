@@ -19,6 +19,8 @@ const NewsListBlock = styled.div`
   }
 `;
 
+
+
 // 샘플 데이터 렌더링 해보기
 const SampleArticle = {
   title: '제목',
