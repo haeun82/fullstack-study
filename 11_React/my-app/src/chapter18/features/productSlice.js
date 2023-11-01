@@ -9,13 +9,15 @@ export const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    addToProductList: (state, aciton) => {
-      state.productList.push(aciton.payload);
+    addToProductList: (state, { payload: productName }) => {
+      state.productList.push(productName);
     }
   }
 });
 
 
 export const { addToProductList } = productSlice.actions;
+
+export const selectProductList = state => state.product.productList;
 
 export default productSlice.reducer;

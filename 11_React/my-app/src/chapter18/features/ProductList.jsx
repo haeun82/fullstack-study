@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToProductList } from './productSlice';
+import { addToProductList, selectProductList } from './productSlice';
 
 function ProductList(props) {
   const dispatch = useDispatch();
-  const productList = useSelector(state => state.product.productList);
+  // const productList = useSelector(state => state.product.productList);
+
+  const productList = useSelector(selectProductList);
+
 
   const [productName, setProductName] = useState();
 
