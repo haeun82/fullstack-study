@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Main from "./pages/Main";
 import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
 
 const GlobalStyle = createGlobalStyle`
   /* 글로벌(공통) 스타일 */
@@ -46,11 +47,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* index: index route(여기서는 default child route) */}
-          <Route index element={<Main />}/> 
+          <Route index element={<Main />} /> 
           {/* 상품별 상세페이지 여러개를 라우팅 하려면? URL 파라미터 사용 */}
           {/* /detail/1로 접속하면 productId에 1이 담기도록 설정 */}
-          <Route path="detail/:productId" element={<ProductDetail />}/>
-          {/* <Route path="cart" element={undefined}/> */}
+          <Route path="detail/:productId" element={<ProductDetail />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="*" element={<div>페이지가 존재하지 않습니다.</div>} />
         </Route>
     </Routes>
 

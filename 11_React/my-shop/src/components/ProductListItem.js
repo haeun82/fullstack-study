@@ -14,7 +14,7 @@ import { styled } from "styled-components";
 
 function ProductListItem(props) {
   const { product: { id, title, price, imagePath} } = props;
-  console.log(props);
+  // console.log(props);
 
   const navigate = useNavigate();
 
