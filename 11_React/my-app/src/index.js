@@ -55,6 +55,7 @@ import ApiRequest from './chapter17/ApiRequest';
 import ReduxTestApp from './chapter18/ReduxTestApp';
 import { store } from './chapter18/app/Store';
 import ProductList from './chapter18/features/ProductList';
+import AppContainer from './components/AppContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -153,10 +154,14 @@ root.render(
     // 2. 리액트에 Redux Store 제공하기
     // ReduxTestApp 컴포넌트와 그 하위 자식들은 Redux Store에 접근 가능
     // Dedux Store에 저장된 state들을 마음대로 꺼내 쓸 수 있음
-    <Provider store={store}>
-        <ReduxTestApp />
-        <ProductList />
-    </Provider>
+    // <Provider store={store}>
+    //     <ReduxTestApp />
+    //     <ProductList />
+    // </Provider>
+
+    // 수업 외: 다양한 컴포넌트 예제
+    // npm install framer-motion polished react-icons styled-reset swiper @fullcalendar/core @fullcalendar/react @fullcalendar/daygrid @lottiefiles/lottie-player react-youtube
+    <AppContainer />
 );
 
 // If you want to start measuring performance in your app, pass a function
