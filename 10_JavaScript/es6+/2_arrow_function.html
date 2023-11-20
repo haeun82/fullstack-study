@@ -118,7 +118,8 @@
       () => { alert('취소 버튼을 누르셨습니다.'); }
     );
 
-
+    // 전역 스코프에서 this는 window 객체를 가리킴(실행환경이 브라우저 일 때)
+    console.log(this);
 
 
   </script>
