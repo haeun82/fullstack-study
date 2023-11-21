@@ -5,7 +5,7 @@ const crypto = require('crypto');
 // 비밀번호는 서버(DB)에 그대로 저장하는건 위험!
 // 암호화해서 저장하는게 좋음 => 그래야 DB가 털려도 원래 비번을 알 수 없음
 // 정확히는 해시 기법: 문자열을 고정된 길이에 다른 문자열로 변환
-// 다양한 해시 알고리즘: md5, sha1, sha256, sha512, sha3, pbkdf2, bcrypt, scrypt 등
+// 다양한 해시 알고리즘: md5, sha1, sha256,(<- 잘 안씀) / sha512, sha3, pbkdf2, bcrypt, scrypt 등
 console.log('base64:', crypto.createHash('sha512').update('비밀번호').digest('base64'));
 console.log('hex:', crypto.createHash('sha512').update('비밀번호').digest('hex'));
 console.log('base64:', crypto.createHash('sha512').update('다른 비밀번호').digest('base64'));
