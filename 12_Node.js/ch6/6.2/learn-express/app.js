@@ -102,6 +102,7 @@ app.get('/', (req, res) => {
   // 해당 세션 ID로 세션에 등록된 정보가 없으면 세션 ID는 요청마다 새롭게 생성됨
   console.log(req.session.id);
   console.log(req.sessionID);
+  console.log(req.session);
 
   res.sendFile(path.join(__dirname, 'index.html'));
 });
