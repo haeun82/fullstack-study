@@ -60,7 +60,7 @@ app.use(session({
   cookie: { // 세션 쿠키에 대한 설정
     httpOnly: true, // JS에서 쿠키에 접근하지 못하게 설정
   },
-  name: 'session-cookie' // 세션 쿠키 이름에 대한 설정, 기본값은 'connect.sid'
+  name: 'session-cookie' // 세션 쿠키 이름에 대한 설정, 기본값은 'connect.sid'/ sid: sessionid
 }));
 
 app.get('/', (req, res) => {
