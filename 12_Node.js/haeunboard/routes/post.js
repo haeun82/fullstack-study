@@ -179,7 +179,7 @@ router.patch('/:id', async (req, res, next) => {
 // DELETE /post/:id 라우터
 router.delete('/:id', async (req, res) => {
   try {
-    await db.collection('post').deleteOn({ _id: new ObjectId(req.params.id) });
+    await db.collection('post').deleteOne({ _id: new ObjectId(req.params.id) });
     res.json({
       message: '삭제 성공'
     });
