@@ -37,7 +37,7 @@ router.get('/write', (req, res) => {
 // POST /post/write 라우트
 router.post('/write', async (req, res, next) => {
   console.log(req.body); 
-  // 클라이언트가 보낸 데이터 -> 요청 본문에 담김 -> body-parser가 분석해서 req.bodt에 객체로 저장
+  // 클라이언트가 보낸 데이터 -> 요청 본문에 담김 -> body-parser가 분석해서 req.body에 객체로 저장
 
   // DB 예외 처리
   try {
@@ -172,6 +172,30 @@ router.patch('/:id', async (req, res, next) => {
   }
 });
 
+// 글 삭제 기능 만들기
+// 1) 글 삭제 버튼 누르면 해당 글 삭제 요청보내기
+// 2) 서버는 확인 후 해당 글을 DB에서 삭제
+
+// DELETE /post/:id 라우터
+router.delete('/:id', async (req, res) => {
+  try {
+    await db.collection('post').deleteOn({ _id: new ObjectId(req.params.id) });
+    res.json({
+      message: '삭제 성공'
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      message: '삭제 실패'
+    });
+  }
+});
+
+// (정리) 서버로 데이터 보내는 방법
+// 1) form 태그 
+// 2) Ajax 방식
+// 3) 라우트 매개변수(= URL 파라미터)
+// 4) 쿼리 스트링
 
 module.exports = router;
 
