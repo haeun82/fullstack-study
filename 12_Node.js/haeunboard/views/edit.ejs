@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body class="grey-bg">
+  <%- include('nav') %>  
+  
+  <!-- Ajax 방식을 쓴다면? (form 태그일 때) e.target.name으로 값에 접근 가능 -->
+  <form id="edit-form" class="form-box">
+    <h4>수정하기</h4>
+    <!-- id값 보내는 꼼수(개발 시 text, 운영(배포) 시 hidden으로 바꿈) -->
+    <input type="hidden" name="id" value="<%= post._id%>">
+    <!-- 데이터 바인딩 -->
+    <label for="title">제목</label>
+    <input type="text" id="title" name="title" value="<%= post.title %>">
+    <label for="centent">내용</label>
+    <input type="text" id="centent" name="content" value="<%= post.content %>">
+    <button type="submit">수정</button>
+  </form>
+
+  <!-- Quiz: edit.js 만들어서 글 작성 기능을 Ajax 요청으로 바꿔보기 -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/js/edit.js"></script>
+</body>
+</html>
