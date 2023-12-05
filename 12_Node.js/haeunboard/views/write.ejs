@@ -12,8 +12,9 @@
   <!-- form 태그를 이용하여 서버에 (동기식) 요청 보내는 방법 
     1) action=/요청 URL
     2) method=GET, POST만 가능
+    method="post" enctype="multipart/form-data"
   -->
-  <form id="wirte-form" class="form-box" action="/post/write" method="post">
+  <form id="wirte-form" class="form-box" action="/post/write">
     <h4>글쓰기</h4>
     <!-- input의 데이터를 보내는 방법
       name 속성 필수 작성(작명한 이름으로 서버에 데이터 전달)-->
@@ -21,6 +22,14 @@
     <input type="text" id="title" name="title">
     <label for="centent">내용</label>
     <input type="text" id="centent" name="content">
+    
+    <!-- accept 속성이 이미지 파일을 강제하는 것은 아님,
+      이미지 파일이 맞는지는 JS로 확장자 검사,
+      확실하게 하려면 서버에서 검사 -->
+    <!-- (중요) 파일을 서버로 전송하고 싶으면 인코딩 타입을 multipart/form-data로 선택 -->
+    <label for="title">이미지</label>
+    <input type="file" id="img" name="img" accept="image/*">
+
     <button type="submit">등록</button>
   </form>
 

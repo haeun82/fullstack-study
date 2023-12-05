@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <%- include('nav') %>
+  <img src="../img/logo.png" alt="프로필 사진" class="profile">
+  <h3 class="title"><%= user.username %></h3>
+  <p class="content">
+    <span>Fullstack</span> Developer
+  </p>
+  <div class="box">
+      안녕하세요 <%= user.username %>입니다. <br>
+      현재 프론트엔드/백엔드 수업을 듣고있으며,<br>
+      취미는 게임과 운동입니다.
+  </div>
+</body>
+</html>
