@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
-
+const MongoStore = require('connect-mongo');
 
 dotenv.config();
 
@@ -37,8 +37,12 @@ app.use(session({
   secret: process.env.COOKIE_SECRET,
   cookie: {
     httpOnly: true,
+    secure: false,
   },
-  name: 'session-cookie'
+  store:MongoStore.create({
+    mongoUrl: `mongodb+srv://${process.env.MONGO_ID}:${process.env.MONGO_PASSWORD}@cluster0.jgjmgj1.mongodb.net/`,
+    dbName: 'board'
+  }),
 }));
 // passport 미들웨어 설정
 app.use(passport.initialize()); // 요청 객체에 passport 설정을 심음(req.inAuthenticated, req.login, req.logout 등)

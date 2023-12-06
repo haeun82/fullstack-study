@@ -84,7 +84,7 @@ router.get('/write', isLoggedIn, (req, res) => {
 // 업로드 완료 시 이미지의 URl도 생성해줌(req.file에 들어있음)
 router.post('/write', isLoggedIn, upload.single('img'), async (req, res, next) => {
   console.log(req.file); // 업로드 후 S3 객체(파일) 정보
-  console.log(req.file.location); // 이미지의 URL 정보, img 태그 src 속성에 넣으면 동작
+  // console.log(req.file.location); // 이미지의 URL 정보, img 태그 src 속성에 넣으면 동작
   console.log(req.body); 
   // 클라이언트가 보낸 데이터 -> 요청 본문에 담김 -> body-parser가 분석해서 req.body에 객체로 저장
 
@@ -133,8 +133,8 @@ router.post('/write', isLoggedIn, upload.single('img'), async (req, res, next) =
 // 2) { _id: 글id } 조건으로 글을 DB에서 찾아서
 // 3) 해당 글을 ejs 파일에 꽂아서 보내줌
 
-// GET /post/:id 라우터
-router.get('/:id', async (req, res, next) => {
+// GET /post/detail/:id 라우터
+router.get('/detail/:id', async (req, res, next) => {
   // res.render('detail');
 
   // DB에서 글 가져오기
@@ -266,7 +266,7 @@ router.get('/', async (req, res) => {
   // 페이지네이션 구현(1)
   // 페이지 번호는 쿼리스트링 또는 URL 파라미터 사용
   // 1->0, 2->5, 3->10 ...
-  // const posts = await db.collection('post').find({}).skip((req.query.page - 1)* 5).limit(5).toArray();
+  const posts = await db.collection('post').find({}).skip((req.query.page - 1)* 5).limit(5).toArray();
 
   // 페이지 계산
   // 1~5 -> 1, 6~10 -> 2,
@@ -280,16 +280,101 @@ router.get('/', async (req, res) => {
   // => 너무 많이 skip하지 못하게 막거나 다른 페이지네이션 방법을 구현
   // 장점: 매우 빠름(_id 기준으로 뭔가 찾는건 DB가 가장 빠르게 하는 작업임)
   // 단점: 바로 다음 게시물만 가져올 수 있어서 1페이지 보다가 3페이지로 이동 불가
-  let posts;
-  if (req.query.nextId) {
-    posts = await db.collection('post')
-      .find({ _id: { $gt: new ObjectId(req.query.nextId) } }) // ObjcetId로 대소 비교
-      .limit(5).toArray();
-  } else {
-    posts = await db.collection('post').find().limit(5).toArray(); // 처음 5개
-  }
+  // let posts;
+  // if (req.query.nextId) {
+  //   posts = await db.collection('post')
+  //     .find({ _id: { $gt: new ObjectId(req.query.nextId) } }) // ObjcetId로 대소 비교
+  //     .limit(5).toArray();
+  // } else {
+  //   posts = await db.collection('post').find().limit(5).toArray(); // 처음 5개
+  // }
   res.render('list', { posts, numOfPage, currentPage });
 });
+
+// 검색 기능 만들기
+// 1) 검색 UI(input과 검색 버튼)에서 키워드 입력 시 서버로 검색어 전송
+// 2) 서버는 그 검색어가 포함된 document를 찾음
+// 3) 그 결과를 ejs에 넣어서 보내줌
+
+// GET /post/search 라우터
+router.get('/search', async (req, res) => {
+  console.log(req.query.keyword);
+
+  const { keyword } = req.query;
+  const currentPage = req.query.page || 1; // 현재 페이지
+  const postsPerPage = 3; // 페이지 당 콘텐츠 개수
+
+  // 1. 서버는 그 검색어와 정확히 일치하는 document를 찾음
+  // const posts = await db.collection('post').find({ title: keyword }).toArray(); 
+
+  // 2. 검색어와 포함된 document를 찾으려면 => 정규표현식(정규식)
+  // const posts = await db.collection('post').find({ title: { $regex: keyword }}).toArray(); 
+  // 문제점: document가 매우 많을 경우 find()를 써서 _id가 아닌 다른 기준으로 document를 찾는건 느려터짐
+  // 예: documnet가 1억개 있으면 1억개를 다 뒤져봄
+  // 해결책: 데이터베이스에 index를 만들어두면 됨
+
+  // 3. index를 사용한 검색
+  // $text: text index(복사본)를 갖다 쓰겠다는 의미
+  // $search: 검색 키워드
+  // const posts = await db.collection('post').find({ $text: { $search: keyword }}).toArray(); 
+
+  // (참고) find() 성능 평가
+  // explain()
+  // const result1 = await db.collection('post').find({ title: keyword }).explain('executionStats'); 
+  // const result2 = await db.collection('post').find({ $text: { $search: keyword }}).explain('executionStats');
+  // console.log(result2);
+
+  // 4. search index를 사용한 검색
+  // find({ 조건 }) -> aggregate([{ 조건1 }, { 조건2 }]) 
+  // 장점: 여러 상세한 조건을 배열로 넣을 수 있음 => pipeline이라고 부름 
+  // const posts = await db.collection('post').aggregate([
+  //   {
+  //     $search: { // search index를 이용해 full-text search를 수행
+  //       index: 'title_index', // 사용할 index 이름
+  //       text: {
+  //         query: keyword, // 검색어
+  //         path: 'title' // 검색할 필드 이름
+  //       }
+  //     }
+  //   }, // 기본적으로 검색어와 관련도 점수가 높은 순으로 정렬됨
+  //   // aggregate에 쓸 수 있는 연산자(find에서는 메서드가 지원됨)
+  //   // { $sort: { _id: 1 } }, // 검색 결과 정렬(1: 오름차순, -1: 내림차순)
+  //   // { $skip: (req.query.page - 1)* 3 }, // 건너뛰기
+  //   // { $limit: 5 }, // 결과 수 제한
+  //   // { $project: { title: 1 } }, // 조회할 필드 선택(1: 추가, 0: 제외)
+    
+    
+  // ]).toArray();
+  // console.log(posts);
+
+  const query = {
+    $search: {
+      index: 'title_index',
+      text: {
+        query: keyword,
+        path: 'title'
+      }
+    }
+  };
+
+  const posts = await db.collection('post').aggregate([
+    query,
+    { $skip: (currentPage - 1) * postsPerPage },
+    { $limit: postsPerPage },
+  ]).toArray();
+
+  const result = await db.collection('post').aggregate([
+    query, 
+    { $count: "searchCount" }
+  ]).toArray();
+  console.log(result);
+  const totalCount = result[0].searchCount;
+  const numOfPage = Math.ceil(totalCount / postsPerPage); // 페이지 수
+
+  res.render('search', { posts, numOfPage, currentPage, keyword });
+});
+
+
 
 module.exports = router;
 

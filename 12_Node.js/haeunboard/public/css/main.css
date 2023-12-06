@@ -153,3 +153,17 @@ div.box {
   color: #fff;
   box-shadow: 3px 5px #333;
 }
+
+/* 검색 UI */
+.search {
+  margin: 20px 0 0 20px;
+  padding: 5px;
+}
+.search-btn {
+  padding: 6px 10px;
+  background: lightgray;
+  border: none;
+  border-radius: 5px;
+  vertical-align: middle;
+  cursor: pointer;
+} 
