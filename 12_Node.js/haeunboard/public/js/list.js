@@ -5,6 +5,9 @@ document.querySelectorAll('.delete').forEach((deleteBtn, index) => {
       const result = await axios.delete(`/post/${e.target.dataset.id}`);
       console.log(result);
 
+      // if (!result.data.flag) {
+      //   return alert(result.data.message);
+      // }
       // 왜 새로고침을 해야 삭제된 결과가 반영되는지?
       // => 삭제 성공 시 HTML도 제거하는 코드 작성(CSR방식)
       e.target.parentElement.parentElement.remove();

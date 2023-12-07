@@ -16,6 +16,21 @@
     <% } else { %>
       <p></p>
     <% } %>
+
+    <hr style="margin-top: 60px;">
+    <div>
+      <% for (let i = 0; i < comments.length; i++) { %>
+        <p>
+          <strong><%= comments[i].author %></strong> <%= comments[i].content %>
+        </p>
+      <% } %>
+    </div>
+    <form action="/post/comment"  method="post">
+      <input type="hidden" name="postId" value="<%= post._id %>">
+      <input type="text" name="content">
+      <button type="submit">등록</button>
+    </form>
   </div>
+  
 </body>
 </html>

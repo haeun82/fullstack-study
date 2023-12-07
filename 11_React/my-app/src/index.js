@@ -148,7 +148,7 @@ root.render(
     // <SimpleRouter />
 
     // 17장 예제
-    // <ApiRequest />
+    <ApiRequest />
 
     // 18장 예제
     // 2. 리액트에 Redux Store 제공하기
@@ -161,7 +161,7 @@ root.render(
 
     // 수업 외: 다양한 컴포넌트 예제
     // npm install framer-motion polished react-icons styled-reset swiper @fullcalendar/core @fullcalendar/react @fullcalendar/daygrid @lottiefiles/lottie-player react-youtube
-    <AppContainer />
+    // <AppContainer />
 );
 
 // If you want to start measuring performance in your app, pass a function

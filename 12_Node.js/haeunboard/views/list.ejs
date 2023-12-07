@@ -54,12 +54,16 @@
             <%= posts[i].title %>
           </a>
 
-          <!-- 글 수정 버튼 -->
-          <a href="/post/edit/<%= posts[i]._id%>">🖊</a>
+          <!-- 본인이 쓴 글만 버튼 보이게 -->
+          <!-- (참고) 만약 _id로 비교시 객체이기때문에 주소값 비교함.. -->
+          <% if (posts[i].username === user?.username) { %>
+            <!-- 글 수정 버튼 -->
+            <a href="/post/edit/<%= posts[i]._id%>">🖊</a>
 
-          <!-- 글 삭제 버튼 -->
-          <!-- data-: 사용자 정의 속성, HTML 요소에 데이터 저장 시 주로 사용 -->
-          <span class="delete cursor-pointer" data-id="<%= posts[i]._id%>">🗑</span>
+            <!-- 글 삭제 버튼 -->
+            <!-- data-: 사용자 정의 속성, HTML 요소에 데이터 저장 시 주로 사용 -->
+            <span class="delete cursor-pointer" data-id="<%= posts[i]._id%>">🗑</span>
+          <% } %>
         </h4>
         <p><%= posts[i].content %></p>
       </div>
