@@ -1,12 +1,24 @@
 import { connect } from "@/database";
 import ListItem from "./LIstItem";
 
+// 특수한 목적의 예약된 변수명
+// dynamic: 렌더링 전략 지정 가능
+export const dynamic = 'force-dynamic'; // Dynamic 렌더링을 해줌, (기본값은 auto)
+
 export default async function List() {
   // (참고) DB 입출력 코드는 server 컴포넌트에서만 쓰기
   const client = await connect;
   const db = await client.db('board');
-  const posts = await db.collection('post').find().toArray();
-  // console.log(posts);
+  let posts = await db.collection('post').find().toArray();
+  console.log(posts); // 경고 수정 전
+
+  // 경고 해결하기: Only plain objects can be passed to Client Components from Server Components.
+  posts = posts.map((post) => {
+    post._id = post._id.toString();
+    post.user = post.user?.toString();
+    return post;
+  });
+  console.log(posts); // 경고 수정 후
 
   return (
      <div className="list-bg">
