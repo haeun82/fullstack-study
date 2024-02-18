@@ -56,6 +56,7 @@ import ReduxTestApp from './chapter18/ReduxTestApp';
 import { store } from './chapter18/app/Store';
 import ProductList from './chapter18/features/ProductList';
 import AppContainer from './components/AppContainer';
+import Book from './chapter3/Book';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -79,9 +80,10 @@ root.render(
     // <JsxUse />
     // <Library />
     // <Clock />
+    // <Book />
 
     // 5장 예제
-    // <PropsUse />
+    <PropsUse />
     // <CommentList />
     // <CommentEx 
     //     author= {{
@@ -148,7 +150,7 @@ root.render(
     // <SimpleRouter />
 
     // 17장 예제
-    <ApiRequest />
+    // <ApiRequest />
 
     // 18장 예제
     // 2. 리액트에 Redux Store 제공하기
